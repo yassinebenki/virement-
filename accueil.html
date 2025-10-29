@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Montserrat + fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .font-montserrat {
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeSlideIn { animation: fadeSlideIn 280ms ease-out both; }
+  </style>
+</head>
+<body class="h-screen overflow-hidden bg-gray-50 text-gray-900 antialiased font-montserrat">
+  <div class="h-full grid grid-cols-1 md:grid-cols-[29%_71%]">
+    <!-- Colonne Illustration  -->
+     <section class="hidden md:block h-screen">
+      <div class="h-full w-full">
+        <img
+          src="C:\Users\acer\Desktop\cons.png"
+          alt="Illustration"
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </section>
+
+    <!-- Colonne Contenu  -->
+    <section class="relative flex flex-col h-full overflow-y-auto">
+      <!-- Navbar -->
+      <div class="sticky top-0 z-10 w-full py-4 px-6 bg-[#375D47] text-white">
+        <div class="relative flex items-center justify-center">
+          <a
+            href="file:///C:/Users/acer/Desktop/accueil.html"
+            class="absolute left-0 inline-flex items-center"
+            title="Aller à l'accueil"
+          >
+            <img
+              src="C:\Users\acer\Desktop\saham-logo.png"
+              alt="Logo"
+              class="h-10 md:h-12 w-auto"
+            />
+          </a>
+          <div class="text-sm font-medium tracking-wide">Accueil</div>
+
+          <!-- Menu profil -->
+          <div class="absolute right-0">
+            <div class="relative">
+              <button
+                id="profileBtn"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="h-10 w-10 rounded-full ring-2 ring-white overflow-hidden focus:outline-none bg-[#0f766e] flex items-center justify-center"
+                title="Profil"
+              >
+                <span id="avatarInitials" class="text-white font-semibold"></span>
+              </button>
+
+              <div
+                id="profileMenu"
+                class="absolute right-0 mt-2 w-72 rounded-xl bg-white text-gray-900 shadow-lg ring-1 ring-gray-200 hidden"
+                role="menu"
+                aria-labelledby="profileBtn"
+              >
+                <div class="p-4 flex items-center gap-3">
+                  <div class="h-12 w-12 rounded-full bg-[#0f766e] text-white flex items-center justify-center">
+                    <span id="menuAvatarInitials" class="text-sm font-semibold"></span>
+                  </div>
+                  <div class="min-w-0">
+                    <div id="menuUserName" class="text-sm font-semibold truncate">Utilisateur</div>
+                    <div id="menuUserSub" class="text-xs text-gray-500 truncate">Profil</div>
+                  </div>
+                </div>
+                <div class="px-4 pb-4">
+                  <button
+                    type="button"
+                    onclick="window.location.href='file:///C:/Users/acer/Desktop/accueil.html'"
+                    class="w-full inline-flex items-center justify-center rounded-lg bg-[#ca391c] px-4 py-2 text-sm font-medium text-white hover:bg-[#b23419] focus:outline-none focus:ring-2 focus:ring-[#ca391c]"
+                    role="menuitem"
+                  >
+                    Déconnexion
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Menu profil -->
+        </div>
+      </div>
+
+      <!-- Carte Accueil -->
+      <div class="p-6 md:p-10">
+        <div class="mx-auto w-full max-w-5xl bg-white rounded-2xl shadow-sm ring-1 ring-gray-100">
+          <div class="flex flex-col gap-8 p-8 md:p-10">
+            <h1 class="text-2xl font-semibold text-gray-900">Accueil</h1>
+
+            <!-- Recherche multicritères -->
+            <form id="searchForm" onsubmit="return false;">
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                <input id="qNum" type="text" placeholder="Num dossier"
+                       class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
+                <input id="qCin" type="text" placeholder="CIN"
+                       class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
+                <input id="qNom" type="text" placeholder="Nom"
+                       class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
+                <input id="qPrenom" type="text" placeholder="Prénom"
+                       class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
+              </div>
+              <div class="mt-4 flex justify-center">
+                <button
+                  id="searchBtn"
+                  type="button"
+                  class="rounded-lg bg-[#213a37] px-6 py-2.5 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#213a37]"
+                >
+                  Rechercher
+                </button>
+              </div>
+            </form>
+
+            <!-- Fiche client sous recherche -->
+            <div id="clientCard" class="hidden animate-fadeSlideIn rounded-xl border border-gray-200 bg-gray-50 p-5">
+              <div class="flex items-start gap-4">
+                <div class="h-12 w-12 rounded-full bg-[#0f766e] text-white flex items-center justify-center text-sm font-semibold" id="clientInitials">--</div>
+                <div class="min-w-0">
+                  <div class="text-sm text-gray-700">
+                    <span class="font-semibold">Nom:</span> <span id="clientNom"></span>
+                    • <span class="font-semibold">Prénom:</span> <span id="clientPrenom"></span>
+                  </div>
+                  <div class="text-sm text-gray-700">
+                    <span class="font-semibold">CIN:</span> <span id="clientCin"></span>
+                    • <span class="font-semibold">Num dossier:</span> <span id="clientNum"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div id="infoBox" class="hidden rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700"></div>
+
+            <!-- Tableau résultats -->
+            <div class="overflow-x-auto rounded-lg border border-gray-200">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">Num dossier</th>
+                    <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="resultsBody" class="divide-y divide-gray-100 bg-white"></tbody>
+              </table>
+            </div>
+
+            <!-- Bouton Créer un dossier -->
+            <div class="flex items-center justify-center">
+              <button
+                id="createBtn"
+                type="button"
+                onclick="if(!this.disabled){ window.location.href='file:///C:/Users/acer/Desktop/step1.html'; }"
+                disabled
+                class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white bg-[#69b394] hover:bg-[#589e81] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Créer un dossier
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Utilisateur pour initiales du menu
+    const user = { lastName: 'Benkirane', firstName: 'Yassine' };
+    function getInitials(ln, fn){ return (ln?.trim()[0]||'').toUpperCase() + (fn?.trim()[0]||'').toUpperCase(); }
+    const avatarSpan = document.getElementById('avatarInitials');
+    const menuAvatarSpan = document.getElementById('menuAvatarInitials');
+    const menuUserName = document.getElementById('menuUserName');
+    const menuUserSub = document.getElementById('menuUserSub');
+    if (avatarSpan) avatarSpan.textContent = getInitials(user.lastName, user.firstName);
+    if (menuAvatarSpan) menuAvatarSpan.textContent = getInitials(user.lastName, user.firstName);
+    if (menuUserName) menuUserName.textContent = user.lastName + ' ' + user.firstName;
+    if (menuUserSub) menuUserSub.textContent = 'Profil';
+
+    // Menu profil au clic
+    (function () {
+      const btn = document.getElementById('profileBtn');
+      const menu = document.getElementById('profileMenu');
+      if (!btn || !menu) return;
+      const closeMenu = () => { menu.classList.add('hidden'); btn.setAttribute('aria-expanded','false'); };
+      const openMenu  = () => { menu.classList.remove('hidden'); btn.setAttribute('aria-expanded','true'); };
+      const toggle    = () => menu.classList.contains('hidden') ? openMenu() : closeMenu();
+      btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); });
+      document.addEventListener('click', (e)=>{ if(!menu.contains(e.target) && e.target!==btn) closeMenu(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+    })();
+
+    // Références UI
+    const qNum = document.getElementById('qNum');
+    const qCin = document.getElementById('qCin');
+    const qNom = document.getElementById('qNom');
+    const qPrenom = document.getElementById('qPrenom');
+    const searchBtn = document.getElementById('searchBtn');
+    const resultsBody = document.getElementById('resultsBody');
+    const infoBox = document.getElementById('infoBox');
+    const clientCard = document.getElementById('clientCard');
+    const clientInitials = document.getElementById('clientInitials');
+    const clientNom = document.getElementById('clientNom');
+    const clientPrenom = document.getElementById('clientPrenom');
+    const clientCin = document.getElementById('clientCin');
+    const clientNum = document.getElementById('clientNum');
+    const createBtn = document.getElementById('createBtn');
+
+    function setInfo(message, type='neutral') {
+      const classes = {
+        neutral: 'border-gray-200 bg-gray-50 text-gray-700',
+        warn: 'border-yellow-200 bg-yellow-50 text-yellow-800',
+        error: 'border-red-200 bg-red-50 text-red-700'
+      };
+      infoBox.className = 'rounded-lg px-4 py-3 text-sm ' + (classes[type] || classes.neutral);
+      infoBox.textContent = message;
+      infoBox.classList.toggle('hidden', !message);
+    }
+
+    function clearClientCard() {
+      clientCard.classList.add('hidden');
+      clientInitials.textContent = '--';
+      clientNom.textContent = '';
+      clientPrenom.textContent = '';
+      clientCin.textContent = '';
+      clientNum.textContent = '';
+    }
+
+    function showClientCard({ nom, prenom, cin, num }) {
+      clientInitials.textContent = getInitials(nom, prenom);
+      clientNom.textContent = nom;
+      clientPrenom.textContent = prenom;
+      clientCin.textContent = cin;
+      clientNum.textContent = num;
+      clientCard.classList.remove('hidden');
+    }
+
+    function rowTemplate({ num, status }) {
+      const chip =
+        status === 'pending'
+          ? '<span class="inline-flex items-center rounded-full bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-800">pending</span>'
+          : status === 'canceled'
+          ? '<span class="inline-flex items-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">canceled</span>'
+          : '<span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700">'+status+'</span>';
+      return `
+        <tr class="animate-fadeSlideIn">
+          <td class="px-4 py-3 text-sm text-gray-900">${num}</td>
+          <td class="px-4 py-3 text-sm">${chip}</td>
+        </tr>
+      `;
+    }
+
+    function clearTable() { resultsBody.innerHTML = ''; }
+
+    function searchMulti() {
+      const num = qNum.value.trim();
+      const cin = qCin.value.trim();
+      const nom = qNom.value.trim();
+      const prenom = qPrenom.value.trim();
+
+      clearTable();
+      clearClientCard();
+      setInfo('');
+      createBtn.disabled = true;
+
+      // Cas 1111: fiche client + tableau 1 ligne pending
+      if (num === '1111' || cin === '1111' || nom === '1111' || prenom === '1111') {
+        showClientCard({ nom: 'Benkirane', prenom: 'Yassine', cin: 'AAAA', num: 'D-1111-001' });
+        resultsBody.innerHTML = [ { num: 'D-1111-001', status: 'pending' } ].map(rowTemplate).join('');
+        setInfo('Résultat pour 1111 — dossier en attente (pending).', 'warn');
+        createBtn.disabled = true;
+        return;
+      }
+
+      // Cas 0000: fiche client + tableau 2 lignes canceled
+      if (num === '0000' || cin === '0000' || nom === '0000' || prenom === '0000') {
+        showClientCard({ nom: 'Benkirane', prenom: 'Yassine', cin: 'AAAA', num: 'D-0000-101' });
+        const data = [
+          { num: 'D-0000-101', status: 'canceled' },
+          { num: 'D-0000-102', status: 'canceled' }
+        ];
+        resultsBody.innerHTML = data.map(rowTemplate).join('');
+        setInfo('Résultats pour 0000 — dossiers annulés (canceled).', 'error');
+        createBtn.disabled = false;
+        return;
+      }
+
+      // Cas 3333: introuvable, tableau vide
+      if (num === '3333' || cin === '3333' || nom === '3333' || prenom === '3333') {
+        setInfo('Utilisateur introuvable.', 'error');
+        createBtn.disabled = true;
+        return;
+      }
+
+      // Aucun critère
+      if (!num && !cin && !nom && !prenom) {
+        setInfo('Renseignez un ou plusieurs critères: Num dossier, CIN, Nom, Prénom.', 'neutral');
+        return;
+      }
+
+      // Autres valeurs
+      setInfo('Aucun résultat pour cette recherche.', 'neutral');
+    }
+
+    searchBtn.addEventListener('click', searchMulti);
+    [qNum, qCin, qNom, qPrenom].forEach(inp => {
+      inp.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); searchMulti(); }
+      });
+    });
+  </script>
+</body>
+</html>
