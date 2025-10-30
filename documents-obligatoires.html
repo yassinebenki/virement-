@@ -61,10 +61,10 @@
           <!-- /Menu profil -->
         </div>
       </div>
-      <!-- Stepper -->
+      <!-- Stepper dynamique -->
       <div class="px-6 md:px-10 py-4 bg-white border-b">
         <div class="mx-auto w-full max-w-3xl">
-          <!-- ...Stepper identique... -->
+          <ol id="stepper" class="flex items-center justify-between"></ol>
         </div>
       </div>
       <!-- Carte du formulaire -->
@@ -110,7 +110,50 @@
     document.addEventListener('click',function(e){const m=document.getElementById('profileMenu'),b=document.getElementById('profileBtn');if(m&&!m.contains(e.target)&&e.target!==b) m.classList.add('hidden');});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('profileMenu').classList.add('hidden');});
 
-    // ----- GESTION UPLOADS FACTORISES -----
+    // ----- STEPPER DYNAMIQUE -----
+    const steps = [
+      { label: 'Informations' },
+      { label: 'Détails' },
+      { label: 'Documents' },
+      { label: 'Vérification' },
+      { label: 'Confirmation' },
+      { label: 'Mon dossier' },
+      { label: 'Récapitulatif' }
+    ];
+    const currentStep = 2; // 0 = Informations, 2 = Documents (étape active)
+    const stepper = document.getElementById('stepper');
+    let stepperHtml = "";
+    steps.forEach((step, i) => {
+      let active = i === currentStep;
+      let done = i < currentStep; // pour le style "validé"
+      let isLast = i === steps.length - 1;
+      let spanClasses = [
+        'h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold',
+        active ? 'text-white bg-[#375D47]'
+          : done ? 'text-white bg-[#0f766e]'
+          : 'text-gray-500 bg-gray-100'
+      ].join(' ');
+      let labelClasses = [
+        'text-xs font-medium',
+        active ? 'text-gray-900 whitespace-nowrap'
+          : done ? 'text-gray-800'
+          : 'text-gray-500'
+      ].join(' ');
+      stepperHtml += `
+        <li class="flex-1 flex items-center">
+          <div class="flex items-center gap-3">
+            <span class="${spanClasses}">${i + 1}</span>
+            <span class="${labelClasses}">${step.label}</span>
+          </div>
+          ${!isLast
+            ? `<div class="flex-1 h-[2px] mx-3 ${active || done ? 'bg-[#375D47]/30' : 'bg-gray-200'}"></div>`
+            : ""}
+        </li>
+      `;
+    });
+    stepper.innerHTML = stepperHtml;
+
+    // ----- UPLOADS FACTORISÉS -----
     const uploadList = [
       {key:'passeport',label:"Passeport Marocain",required:true},
       {key:'attestation',label:"Son attestation de pré-inscription",required:false},
