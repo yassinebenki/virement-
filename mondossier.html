@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulaire - Étape 1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .font-montserrat {
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
+    .press { transform: scale(0.98); }
+  </style>
+</head>
+<body class="h-screen overflow-hidden bg-gray-50 text-gray-900 antialiased font-montserrat">
+  <div class="h-full grid grid-cols-1 md:grid-cols-[29%_71%]">
+
+    <!-- Colonne Illustration -->
+    <section class="hidden md:block h-screen">
+      <img
+        src="cons.png" alt="Illustration"
+        class="h-full w-full object-cover"
+      />
+    </section>
+
+    <!-- Colonne Formulaire -->
+    <section class="relative flex flex-col h-full overflow-y-auto">
+
+      <!-- Navbar -->
+      <nav class="sticky top-0 z-10 w-full py-8 px-6 bg-[#375D47] text-white">
+        <div class="relative flex items-center justify-center">
+          <a href="accueil.html" class="absolute left-0 inline-flex items-center" title="Aller à l'accueil">
+            <img
+              src="saham-logo.png" alt="Logo"
+              class="h-10 md:h-12 w-auto"
+            />
+          </a>
+          <div class="text-sm font-medium tracking-wide">Étape 1 sur 6</div>
+          <!-- Menu profil -->
+          <div class="absolute right-0">
+            <div class="relative">
+              <button id="profileBtn" type="button" aria-haspopup="true" aria-expanded="false"
+                class="h-10 w-10 rounded-full ring-2 ring-white overflow-hidden focus:outline-none bg-[#0f766e] flex items-center justify-center"
+                title="Profil">
+                <span id="avatarInitials" class="text-white font-semibold"></span>
+              </button>
+              <!-- Dropdown menu -->
+              <div
+                id="profileMenu"
+                class="absolute right-0 mt-2 w-72 rounded-xl bg-white text-gray-900 shadow-lg ring-1 ring-gray-200 hidden"
+                role="menu"
+                aria-labelledby="profileBtn"
+              >
+                <div class="p-4 flex items-center gap-3">
+                  <div class="h-12 w-12 rounded-full bg-[#0f766e] text-white flex items-center justify-center">
+                    <span id="menuAvatarInitials" class="text-sm font-semibold"></span>
+                  </div>
+                  <div class="min-w-0">
+                    <div id="menuUserName" class="text-sm font-semibold truncate"></div>
+                    <div id="menuUserSub" class="text-xs text-gray-500 truncate"></div>
+                  </div>
+                </div>
+                <div class="px-4 pb-4">
+                  <button
+                    type="button"
+                    onclick="window.location.href='accueil.html'"
+                    class="w-full inline-flex items-center justify-center rounded-lg bg-[#ca391c] px-4 py-2 text-sm font-medium text-white hover:bg-[#b23419] focus:outline-none focus:ring-2 focus:ring-[#ca391c]"
+                    role="menuitem"
+                  >
+                    Déconnexion
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Menu profil -->
+        </div>
+      </nav>
+
+      <!-- Stepper -->
+      <div class="px-6 md:px-10 py-4 bg-white border-b">
+        <div class="mx-auto w-full max-w-3xl">
+          <ol class="flex items-center justify-between">
+            <li class="flex-1 flex items-center">
+              <div class="flex items-center gap-3">
+                <span class="h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold text-white bg-[#375D47]">1</span>
+                <span class="text-xs font-medium text-gray-800">Informations</span>
+              </div>
+              <div class="flex-1 h-[2px] mx-3 bg-[#375D47]/30"></div>
+            </li>
+            <li class="flex-1 flex items-center">
+              <div class="flex items-center gap-3">
+                <span class="h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold text-white bg-[#375D47]">2</span>
+                <span class="text-xs font-medium text-gray-800">Détails</span>
+              </div>
+              <div class="flex-1 h-[2px] mx-3 bg-[#375D47]/30"></div>
+            </li>
+            <li class="flex-1 flex items-center">
+              <div class="flex items-center gap-3">
+                <span class="h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold text-white bg-[#375D47]">3</span>
+                <span class="text-xs font-medium text-gray-800">Documents</span>
+              </div>
+              <div class="flex-1 h-[2px] mx-3 bg-[#375D47]/30"></div>
+            </li>
+            <li class="flex-1 flex items-center">
+              <div class="flex items-center gap-3">
+                <span class="h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold text-white bg-[#375D47]">4</span>
+                <span class="text-xs font-medium text-gray-800">Vérification</span>
+              </div>
+              <div class="flex-1 h-[2px] mx-3 bg-[#375D47]/30"></div>
+            </li>
+            <li class="flex-1 flex items-center">
+              <div class="flex items-center gap-3">
+                <span class="h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold text-white bg-[#375D47]">5</span>
+                <span class="text-xs font-semibold text-gray-900">Confirmation</span>
+              </div>
+              <div class="flex-1 h-[2px] mx-3 bg-gray-200"></div>
+            </li>
+            <li class="flex items-center">
+              <div class="flex items-center gap-3">
+                <span class="h-8 w-8 rounded-full flex items-center justify-center text-xs font-semibold text-gray-500 bg-gray-100">6</span>
+                <span class="text-xs font-medium text-gray-500">Terminé</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+
+      <!-- Carte du formulaire -->
+      <section class="p-6 md:p-10">
+        <div class="mx-auto w-full max-w-3xl bg-white rounded-2xl shadow-sm ring-1 ring-gray-100">
+          <div class="p-8 md:p-10">
+            <h2 class="text-[#375D47] font-bold text-lg mb-6">Mon dossier</h2>
+            <form th:action="@{/form/step1}" method="post" th:object="${formData}" enctype="multipart/form-data" class="flex flex-col gap-8">
+
+              <div class="flex flex-col gap-2">
+                <input
+                  id="folderName"
+                  type="text"
+                  th:field="*{lastName}"
+                  placeholder="Nom de votre dossier *"
+                  class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                  aria-label="Nom du dossier"
+                />
+                <span class="text-gray-500">Donnez un nom à votre dossier pour le retrouver facilement</span>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <input
+                  id="userEmail"
+                  type="email"
+                  th:field="*{email}"
+                  placeholder="Email"
+                  class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                  aria-label="Email"
+                />
+                <span class="text-gray-500">Renseignez votre email pour suivre le statut de votre dossier</span>
+              </div>
+
+              <!-- Bloc Drag & Drop -->
+              <div class="flex flex-col gap-2">
+                <label for="document" class="text-gray-900 font-semibold">Ajoutez un document</label>
+                <div id="dropZone" class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-4 bg-white cursor-pointer transition hover:border-[#375D47]">
+                  <input id="document" type="file" class="hidden" accept="application/pdf,image/png,image/jpeg" />
+                  <span id="fileState" class="hidden w-full mb-2"><strong id="fileName"></strong> <span id="fileMeta" class="text-xs text-gray-500"></span></span>
+                  <div id="filePreview" class="mb-2 text-xs text-gray-500">Aperçu</div>
+                  <span id="fileError" class="hidden text-xs text-red-500"></span>
+                  <button id="clearFileBtn" type="button" class="hidden mt-2 text-sm text-red-600 underline">Effacer</button>
+                  <span class="text-gray-500 mt-2 block">Fichiers acceptés : PDF, JPG, PNG. Taille max 5Mo.</span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Navigation -->
+        <div class="mt-2 flex items-center justify-center gap-6">
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-[#375D47] bg-white border border-[#375D47] hover:bg-[#f3f7f5] transition-colors focus:outline-none focus:ring-2 focus:ring-[#375D47]/30"
+          >
+            Précédent
+          </button>
+          <button
+            type="button"
+            onclick="window.location.href='step2.html'"
+            class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white bg-[#375D47] hover:bg-[#2f4f3d] transition-colors focus:outline-none focus:ring-2 focus:ring-[#375D47]/30"
+          >
+            Suivant
+          </button>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <!-- JS optimisé profil/menu/drag'n'drop -->
+  <script>
+    // Gestion de l'avatar et du menu profil
+    (() => {
+      const user = { lastName: 'Benkirane', firstName: 'Yassine' };
+      const initials = ((user.lastName?.trim()[0] || '').toUpperCase()) + ((user.firstName?.trim()[0] || '').toUpperCase());
+      document.getElementById('avatarInitials')?.textContent = initials;
+      document.getElementById('menuAvatarInitials')?.textContent = initials;
+      const nameElt = document.getElementById('menuUserName');
+      if (nameElt) nameElt.textContent = `${user.lastName} ${user.firstName}`;
+      const subElt = document.getElementById('menuUserSub');
+      if (subElt) subElt.textContent = 'Profil';
+      // Menu déroulant
+      const btn = document.getElementById('profileBtn');
+      const menu = document.getElementById('profileMenu');
+      if (btn && menu) {
+        function closeMenu() { menu.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+        function openMenu() { menu.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+        function toggleMenu() { menu.classList.contains('hidden') ? openMenu() : closeMenu(); }
+        btn.addEventListener('click', e => { e.stopPropagation(); toggleMenu(); });
+        document.addEventListener('click', e => { if (!menu.contains(e.target) && e.target !== btn) closeMenu(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+      }
+    })();
+
+    // Drag & Drop document
+    (() => {
+      const dropZone = document.getElementById('dropZone');
+      const input = document.getElementById('document');
+      const fileState = document.getElementById('fileState');
+      const fileName = document.getElementById('fileName');
+      const fileMeta = document.getElementById('fileMeta');
+      const filePreview = document.getElementById('filePreview');
+      const fileError = document.getElementById('fileError');
+      const clearFileBtn = document.getElementById('clearFileBtn');
+      if (!dropZone || !input) return;
+      const MAX_BYTES = 5 * 1024 * 1024;
+      const ACCEPT_MIME = ['application/pdf', 'image/png', 'image/jpeg'];
+      function formatBytes(bytes) {
+        if (bytes === 0) return '0 o';
+        const k = 1024, sizes = ['o', 'Ko', 'Mo', 'Go'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      }
+      function resetState() {
+        input.value = '';
+        fileState?.classList.add('hidden');
+        fileError?.classList.add('hidden');
+        if (fileError) fileError.textContent = '';
+        if (filePreview) filePreview.innerHTML = '<span class="text-xs text-gray-500">Aperçu</span>';
+        clearFileBtn?.classList.add('hidden');
+      }
+      function showFile(file) {
+        fileState?.classList.remove('hidden');
+        if (fileName) fileName.textContent = file.name;
+        if (fileMeta) fileMeta.textContent = `${file.type || 'type inconnu'} • ${formatBytes(file.size)}`;
+        fileError?.classList.add('hidden');
+        if (fileError) fileError.textContent = '';
+        if (filePreview) filePreview.innerHTML = '<span class=\"text-xs text-gray-500\">Aperçu</span>';
+        if (file.type.startsWith('image/')) {
+          const img = document.createElement('img');
+          img.className = 'h-full w-full object-cover';
+          img.alt = 'Prévisualisation';
+          const reader = new FileReader();
+          reader.onload = (e) => { img.src = e.target.result; filePreview.innerHTML = ''; filePreview.appendChild(img); };
+          reader.readAsDataURL(file);
+        } else if (file.type === 'application/pdf') {
+          if (filePreview) filePreview.innerHTML = '<span class=\"text-xs text-gray-700 font-medium\">PDF</span>';
+        }
+        clearFileBtn?.classList.remove('hidden');
+      }
+      function validate(file) {
+        if (!file) return false;
+        if (!ACCEPT_MIME.includes(file.type)) {
+          if (fileError) fileError.textContent = 'Type de fichier non autorisé. PDF, JPG ou PNG uniquement.';
+          fileError?.classList.remove('hidden');
+          return false;
+        }
+        if (file.size > MAX_BYTES) {
+          if (fileError) fileError.textContent = 'Fichier trop volumineux. Taille max 5 Mo.';
+          fileError?.classList.remove('hidden');
+          return false;
+        }
+        return true;
+      }
+      input.addEventListener('change', () => {
+        const file = input.files && input.files[0];
+        if (!file) { resetState(); return; }
+        if (!validate(file)) { showFile(file); return; }
+        showFile(file);
+      });
+      clearFileBtn?.addEventListener('click', () => resetState());
+      // Drag & Drop
+      ['dragenter', 'dragover'].forEach(evt => {
+        dropZone.addEventListener(evt, e => {
+          e.preventDefault(); e.stopPropagation();
+          dropZone.classList.add('border-[#213a37]', 'bg-[#f1f5f4]');
+        });
+      });
+      ['dragleave', 'drop'].forEach(evt => {
+        dropZone.addEventListener(evt, e => {
+          e.preventDefault(); e.stopPropagation();
+          dropZone.classList.remove('border-[#213a37]', 'bg-[#f1f5f4]');
+        });
+      });
+      dropZone.addEventListener('click', () => input.click());
+      dropZone.addEventListener('drop', e => {
+        const file = e.dataTransfer?.files[0];
+        if (!file) return;
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        input.files = dataTransfer.files;
+        if (!validate(file)) { showFile(file); return; }
+        showFile(file);
+      });
+    })();
+  </script>
+</body>
+</html>
