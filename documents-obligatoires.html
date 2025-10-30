@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulaire - Étape 1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .font-montserrat {
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
+    .press { transform: scale(0.98); }
+  </style>
+</head>
+<body class="h-screen overflow-hidden bg-gray-50 text-gray-900 antialiased font-montserrat">
+  <div class="h-full grid grid-cols-1 md:grid-cols-[29%_71%]">
+    <!-- Colonne Illustration -->
+    <section class="hidden md:block h-screen">
+      <div class="h-full w-full">
+        <img src="assets/images/cons.png" alt="Illustration" class="h-full w-full object-cover" />
+      </div>
+    </section>
+
+    <!-- Colonne Formulaire -->
+    <section class="relative flex flex-col h-full overflow-y-auto">
+      <!-- Navbar -->
+      <div class="sticky top-0 z-10 w-full py-8 px-6 bg-[#375D47] text-white">
+        <div class="relative flex items-center justify-center">
+          <a href="accueil.html" class="absolute left-0 inline-flex items-center" title="Aller à l'accueil">
+            <img src="assets/images/saham-logo.png" alt="Logo" class="h-10 md:h-12 w-auto" />
+          </a>
+          <div class="text-sm font-medium tracking-wide">Étape 1 sur 6</div>
+          <!-- Menu profil -->
+          <div class="absolute right-0">
+            <div class="relative">
+              <button id="profileBtn" type="button" aria-haspopup="true" aria-expanded="false" class="h-10 w-10 rounded-full ring-2 ring-white overflow-hidden focus:outline-none bg-[#0f766e] flex items-center justify-center" title="Profil">
+                <span id="avatarInitials" class="text-white font-semibold"></span>
+              </button>
+              <!-- Menu déroulant -->
+              <div id="profileMenu" class="absolute right-0 mt-2 w-72 rounded-xl bg-white text-gray-900 shadow-lg ring-1 ring-gray-200 hidden" role="menu" aria-labelledby="profileBtn">
+                <div class="p-4 flex items-center gap-3">
+                  <div class="h-12 w-12 rounded-full bg-[#0f766e] text-white flex items-center justify-center">
+                    <span id="menuAvatarInitials" class="text-sm font-semibold"></span>
+                  </div>
+                  <div class="min-w-0">
+                    <div id="menuUserName" class="text-sm font-semibold truncate">Utilisateur</div>
+                    <div id="menuUserSub" class="text-xs text-gray-500 truncate">Profil</div>
+                  </div>
+                </div>
+                <div class="px-4 pb-4">
+                  <button type="button" onclick="window.location.href='accueil.html'" class="w-full inline-flex items-center justify-center rounded-lg bg-[#ca391c] px-4 py-2 text-sm font-medium text-white hover:bg-[#b23419] focus:outline-none focus:ring-2 focus:ring-[#ca391c]" role="menuitem">
+                    Déconnexion
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Menu profil -->
+        </div>
+      </div>
+      <!-- Stepper -->
+      <div class="px-6 md:px-10 py-4 bg-white border-b">
+        <div class="mx-auto w-full max-w-3xl">
+          <!-- ...Stepper identique... -->
+        </div>
+      </div>
+      <!-- Carte du formulaire -->
+      <div class="p-6 md:p-10">
+        <div class="mx-auto w-full max-w-3xl bg-white rounded-2xl shadow-sm ring-1 ring-gray-100">
+          <div class="p-8 md:p-10">
+            <h1 class="mb-6 text-xl md:text-2xl font-semibold text-gray-900">Nouveau dossier</h1>
+            <form action="#" method="post" enctype="multipart/form-data" class="flex flex-col gap-8">
+              <h2 class="text-[#375D47] font-bold text-lg mb-4">Justificatif d'identité</h2>
+              <div id="uploads" class="flex flex-col gap-8">
+                <div data-key="passeport"></div>
+                <div data-key="attestation"></div>
+                <h2 class="text-[#375D47] font-bold text-lg mt-6">Justificatifs remboursement du crédit étudiant (obligatoires)</h2>
+                <div data-key="certificat"></div>
+                <div data-key="contrat"></div>
+                <div data-key="amortissement"></div>
+                <h2 class="text-[#375D47] font-bold text-lg mt-6">Justificatif frais de loyer (obligatoire)</h2>
+                <div data-key="bail"></div>
+              </div>
+              <div class="mt-2 flex items-center justify-center gap-6">
+                <button type="button" class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-[#375D47] bg-white border border-[#375D47] hover:bg-[#f3f7f5] transition-colors focus:outline-none focus:ring-2 focus:ring-[#375D47]/30">
+                  Précédent
+                </button>
+                <button type="button" onclick="window.location.href='step2.html'" class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white bg-[#375D47] hover:bg-[#2f4f3d] transition-colors focus:outline-none focus:ring-2 focus:ring-[#375D47]/30">
+                  Suivant
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    // ----- GESTION PROFIL -----
+    const user = { lastName: 'Benkirane', firstName: 'Yassine' };
+    const initials = (user.lastName?.trim()[0]||'').toUpperCase() + (user.firstName?.trim()[0]||'').toUpperCase();
+    document.getElementById('avatarInitials').textContent = initials;
+    document.getElementById('menuAvatarInitials').textContent = initials;
+    document.getElementById('menuUserName').textContent = user.lastName + ' ' + user.firstName;
+    document.getElementById('menuUserSub').textContent = 'Profil';
+    document.getElementById('profileBtn').addEventListener('click',function(e){e.stopPropagation();const m=document.getElementById('profileMenu');if(m.classList.contains('hidden')){m.classList.remove('hidden');this.setAttribute('aria-expanded','true');}else{m.classList.add('hidden');this.setAttribute('aria-expanded','false');}});
+    document.addEventListener('click',function(e){const m=document.getElementById('profileMenu'),b=document.getElementById('profileBtn');if(m&&!m.contains(e.target)&&e.target!==b) m.classList.add('hidden');});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('profileMenu').classList.add('hidden');});
+
+    // ----- GESTION UPLOADS FACTORISES -----
+    const uploadList = [
+      {key:'passeport',label:"Passeport Marocain",required:true},
+      {key:'attestation',label:"Son attestation de pré-inscription",required:false},
+      {key:'certificat',label:"Certificat de scolarité",required:true},
+      {key:'contrat',label:"Contrat de prêt",required:true},
+      {key:'amortissement',label:"Tableau d'amortissement",required:true},
+      {key:'bail',label:"Contrat de bail",required:true},
+    ];
+    function renderUploadFields() {
+      uploadList.forEach(({key,label,required}) => {
+        const container = document.querySelector(`div[data-key="${key}"]`);
+        if(!container) return;
+        container.innerHTML = `
+        <label for="${key}-file" class="text-sm font-medium text-gray-800">${label}</label>
+        <label class="dropZone flex flex-col items-center justify-center gap-3 w-full cursor-pointer rounded-xl border border-dashed border-gray-300 bg-gray-50 px-4 py-10 text-center text-gray-600 hover:border-[#213a37] hover:bg-[#f1f5f4] transition" tabindex="0" data-key="${key}">
+          <span class="text-sm">Glisser-déposer un fichier ici ou <span class="text-[#213a37] font-medium">cliquez pour parcourir</span></span>
+          <span class="text-xs text-gray-500">Formats acceptés : PDF • Taille max : 5 Mo</span>
+          <input id="${key}-file" name="${key}" type="file" accept=".pdf, image/png, image/jpeg" class="sr-only uploadInput" data-key="${key}" ${required?'required':''}>
+        </label>
+        <div class="fileState hidden mt-3 rounded-lg border border-gray-200 bg-white p-4" data-key="${key}">
+          <div class="flex items-start gap-3">
+            <div class="filePreview flex-shrink-0 h-12 w-12 rounded-md bg-gray-100 flex items-center justify-center overflow-hidden"></div>
+            <div class="min-w-0 flex-1">
+              <div class="fileName text-sm font-medium text-gray-900 truncate"></div>
+              <div class="fileMeta text-xs text-gray-500"></div>
+              <div class="fileError hidden mt-2 text-xs text-red-600"></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="clearFileBtn rounded-md bg-gray-100 px-3 py-2 text-xs font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300" title="Retirer le fichier">Retirer</button>
+            </div>
+          </div>
+        </div>
+        `;
+      });
+    }
+    renderUploadFields();
+    document.querySelectorAll('.dropZone').forEach(zone => {
+      const key = zone.dataset.key;
+      const input = zone.querySelector('.uploadInput');
+      const state = document.querySelector(`.fileState[data-key="${key}"]`);
+      const preview = state.querySelector('.filePreview');
+      const fileName = state.querySelector('.fileName');
+      const fileMeta = state.querySelector('.fileMeta');
+      const fileError = state.querySelector('.fileError');
+      const clearBtn = state.querySelector('.clearFileBtn');
+      const MAX_BYTES = 5 * 1024 * 1024;
+      const ACCEPT_MIME = ['application/pdf', 'image/png', 'image/jpeg'];
+
+      ['dragenter', 'dragover'].forEach(evt => zone.addEventListener(evt, e => {
+        e.preventDefault(); e.stopPropagation();
+        zone.classList.add('border-[#213a37]', 'bg-[#f1f5f4]');
+      }));
+      ['dragleave', 'drop'].forEach(evt => zone.addEventListener(evt, e => {
+        e.preventDefault(); e.stopPropagation();
+        zone.classList.remove('border-[#213a37]', 'bg-[#f1f5f4]');
+      }));
+      zone.addEventListener('drop', e => {
+        const file = e.dataTransfer.files[0];
+        handleFile(file);
+      });
+      zone.addEventListener('click', () => input.click());
+      input.addEventListener('change', () => {
+        if (!input.files.length) return resetState();
+        handleFile(input.files[0]);
+      });
+      clearBtn.addEventListener('click', resetState);
+      function handleFile(file) {
+        if (!file) return resetState();
+        if (!ACCEPT_MIME.includes(file.type)) return showFile(file,'Type de fichier non autorisé. PDF, JPG ou PNG uniquement.');
+        if (file.size > MAX_BYTES) return showFile(file,'Fichier trop volumineux. Taille max 5 Mo.');
+        showFile(file);
+      }
+      function resetState() {
+        input.value = '';
+        state.classList.add('hidden');
+        fileError.classList.add('hidden');
+        preview.innerHTML = '<span class="text-xs text-gray-500">Aperçu</span>';
+      }
+      function showFile(file, errorMsg=null) {
+        state.classList.remove('hidden');
+        fileName.textContent = file ? file.name : '';
+        fileMeta.textContent = file ? `${file.type||'type inconnu'} • ${Math.round(file.size/1024)} Ko` : '';
+        fileError.classList.toggle('hidden', !errorMsg);
+        fileError.textContent = errorMsg || '';
+        preview.innerHTML = '<span class="text-xs text-gray-500">Aperçu</span>';
+        if(file && file.type.startsWith('image/')) {
+          const img=document.createElement('img'); img.className='h-full w-full object-cover'; img.alt='Prévisualisation';
+          const reader=new FileReader(); reader.onload=e=>{img.src=e.target.result;preview.innerHTML='';preview.appendChild(img);};reader.readAsDataURL(file);
+        } else if(file && file.type==="application/pdf") {
+          preview.innerHTML = '<span class="text-xs text-gray-700 font-medium">PDF</span>';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
