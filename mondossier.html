@@ -163,19 +163,6 @@
                 />
                 <span class="text-gray-500">Renseignez votre email pour suivre le statut de votre dossier</span>
               </div>
-
-              <!-- Bloc Drag & Drop -->
-              <div class="flex flex-col gap-2">
-                <label for="document" class="text-gray-900 font-semibold">Ajoutez un document</label>
-                <div id="dropZone" class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-4 bg-white cursor-pointer transition hover:border-[#375D47]">
-                  <input id="document" type="file" class="hidden" accept="application/pdf,image/png,image/jpeg" />
-                  <span id="fileState" class="hidden w-full mb-2"><strong id="fileName"></strong> <span id="fileMeta" class="text-xs text-gray-500"></span></span>
-                  <div id="filePreview" class="mb-2 text-xs text-gray-500">Aperçu</div>
-                  <span id="fileError" class="hidden text-xs text-red-500"></span>
-                  <button id="clearFileBtn" type="button" class="hidden mt-2 text-sm text-red-600 underline">Effacer</button>
-                  <span class="text-gray-500 mt-2 block">Fichiers acceptés : PDF, JPG, PNG. Taille max 5Mo.</span>
-                </div>
-              </div>
             </form>
           </div>
         </div>
@@ -317,4 +304,5 @@
     })();
   </script>
 </body>
+
 </html>
